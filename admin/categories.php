@@ -18,7 +18,12 @@
                     </h1>
 
                     <div class="col-xs-6">
-                        <form action="">
+
+                        <!--Adding logic -->
+
+                        <?php add_categories(); ?>
+
+                        <form action="" method="post">
                             <div class="form-group">
                                 <label for="cat-title">Add Catergory</label>
                                 <input type="text" class="form-control" name="cat_title">
@@ -27,14 +32,21 @@
                                 <input type="submit" class="btn btn-primary" name="submit" value="Add category">
                             </div>
                         </form>    
+
+
+                        <!-- Edit logic -->
+                        <?php
+
+                        if(isset($_GET['edit'])){
+                            $cat_id = $_GET['edit'];
+                            include "includes/update_categories.php";
+                        }
+
+                        ?>
+
                     </div>
 
-                    <?php
-
-                    $query = "SELECT * FROM categories order by cat_id desc";
-                    $categories_query = mysqli_query($connection, $query);
-
-                    ?>
+                    <!--Categories list logic -->
 
                     <div class="col-xs-6">
                         <table class="table table-bordered table-hover">
@@ -42,24 +54,16 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Category title</th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                               
-                                <?php
-                                while($row = mysqli_fetch_assoc($categories_query)){
-                                    $cat_id = $row['cat_id'];
-                                    $cat_title = $row['cat_title'];
-                                ?>
-                                
-                                <tr>
-                                    <td><?php echo $cat_id ?></td>
-                                    <td><?php echo $cat_title?></td>
-                                </tr>
-                                
-                                <?php
-                                }
-                                ?>
+
+                                <?php show_all_categories();?>
+
+                                <?php delete_categories();?>
+
 
                             </tbody>
                         </table>
