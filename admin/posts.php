@@ -14,37 +14,37 @@
                 <div class="col-lg-12">
                     <h1 class="page-header">
                         Posts
-                        <small>Author</small>
                     </h1>
-                    
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <td>Id</td>
-                                <td>Author</td>
-                                <td>Title</td>
-                                <td>Category</td>
-                                <td>Status</td>
-                                <td>Image</td>
-                                <td>Tags</td>
-                                <td>Comments</td>
-                                <td>Date</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Arli</td>
-                                <td>Post title</td>
-                                <td>PHP</td>
-                                <td>Added</td>
-                                <td>Image</td>
-                                <td>php-tag</td>
-                                <td>My comment</td>
-                                <td>01.01.2019</td>
-                            </tr>
-                        </thead>
-                    </table>
-                    
-               
+
+                    <?php
+
+                    if(isset($_GET['source'])){
+                        $source=$_GET['source'];
+                    } else {
+                        $source='';
+                    }
+
+                    switch($source){
+
+                        case 'add_post':
+                            include "includes/add_post.php";
+                            break;
+
+                        case 'edit':
+                            echo "edit";
+                            break;
+
+                        case 'delete':
+                            echo "delete";
+                            break;
+                            
+                        default:
+                            include "includes/view_all_posts.php";
+                            break;
+                    }
+
+                    ?>
+ 
                 </div>
             </div>
             <!-- /.row -->
