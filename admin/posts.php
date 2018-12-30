@@ -30,8 +30,8 @@
                             include "includes/add_post.php";
                             break;
 
-                        case 'edit':
-                            echo "edit";
+                        case 'edit_post':
+                            include "includes/edit_post.php";
                             break;
 
                         case 'delete':
