@@ -82,7 +82,7 @@ if(isset($_GET["p_id"])){
 
             <?php
 
-    $query = "SELECT * FROM categories order by cat_id desc";
+    $query = "SELECT * FROM categories order by cat_title desc";
                $categories_query = mysqli_query($connection, $query);
 
                confirm_query($categories_query);
