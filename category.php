@@ -20,11 +20,15 @@ include "includes/navigation.php";
         <div class="col-md-8">
 
             <?php 
+            
+            if(isset($_GET['category'])){
+                $cat_id = $_GET['category'];
+            }
 
-            $query = "SELECT * FROM posts";
-            $select_all_posts_query = mysqli_query($connection, $query);
+            $query = "SELECT * FROM posts WHERE post_category_id = {$cat_id} order by post_date desc";
+            $select_posts_by_category_query = mysqli_query($connection, $query);
 
-            while($row = mysqli_fetch_assoc($select_all_posts_query)){
+            while($row = mysqli_fetch_assoc($select_posts_by_category_query)){
                 $post_id = $row['post_id'];
                 $post_title = $row['post_title'];
                 $post_author = $row['post_author'];
