@@ -76,7 +76,6 @@ include "includes/navigation.php";
                     $insert_comment_query = mysqli_query($connection, $query);
 
                     if(!$insert_comment_query){
-                        echo $query;
                         die("Database query failed! " . mysqli_error($connection));
                     }
                 }
