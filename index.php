@@ -21,7 +21,7 @@ include "includes/navigation.php";
 
             <?php 
 
-            $query = "SELECT * FROM posts";
+            $query = "SELECT * FROM posts order by post_id desc";
             $select_all_posts_query = mysqli_query($connection, $query);
 
             while($row = mysqli_fetch_assoc($select_all_posts_query)){
