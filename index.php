@@ -21,8 +21,12 @@ include "includes/navigation.php";
 
             <?php 
 
-            $query = "SELECT * FROM posts order by post_id desc";
+            $query = "SELECT * FROM posts WHERE post_status = 'published' order by post_id desc";
             $select_all_posts_query = mysqli_query($connection, $query);
+            
+            if(mysqli_num_rows($select_all_posts_query) == 0) {
+                echo "<h1 class=text-center>No posts!</h1>";
+            }
 
             while($row = mysqli_fetch_assoc($select_all_posts_query)){
                 $post_id = $row['post_id'];
