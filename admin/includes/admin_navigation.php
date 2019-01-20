@@ -52,10 +52,10 @@
                 <a href="javascript:;" data-toggle="collapse" data-target="#users_dropdown"><i class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="users_dropdown" class="collapse">
                     <li>
-                        <a href="#">View posts</a>
+                        <a href="./users.php">View users</a>
                     </li>
                     <li>
-                        <a href="#">Add posts</a>
+                        <a href="./users.php?source=add_user">Add users</a>
                     </li>
                 </ul>
             </li>
