@@ -31,14 +31,19 @@ if(isset($_POST["create_post"])){
 <form action="" method="post" enctype="multipart/form-data">
 
     <div class="form-group">
-        <label for="title">Post Title</label>
-        <input type="text" class="form-control" name="title">
+        <label for="title">First name</label>
+        <input type="text" class="form-control" name="user_firstname">
+    </div>
+    
+        <div class="form-group">
+        <label for="title">Last name</label>
+        <input type="text" class="form-control" name="user_lastname">
     </div>
 
     <div class="form-group">
-        <label for="post_category">Post Category Id</label>
+        <label for="user_role">User role</label>
         <br>
-        <select name="post_category" id="post_category">
+        <select name="user_role" id="user_Role">
 
             <?php
 
@@ -60,32 +65,27 @@ if(isset($_POST["create_post"])){
     </div>
 
     <div class="form-group">
-        <label for="post_author">Post Auhtor</label>
-        <input type="text" class="form-control" name="author">
+        <label for="post_author">Username</label>
+        <input type="text" class="form-control" name="username">
     </div>
 
     <div class="form-group">
-        <label for="post_status">Post Status</label>
-        <input type="text" class="form-control" name="post_status">
+        <label for="post_status">Password</label>
+        <input type="password" class="form-control" name="user_password">
     </div>
 
-    <div class="form-group">
+<!--    <div class="form-group">
         <label for="post_image">Post Image</label>
         <input type="file" name="image">
+    </div>-->
+
+    <div class="form-group">
+        <label for="post_tags">Email</label>
+        <input type="text" class="form-control" name="user_email">
     </div>
 
     <div class="form-group">
-        <label for="post_tags">Post Tags</label>
-        <input type="text" class="form-control" name="post_tags">
-    </div>
-
-    <div class="form-group">
-        <label for="post_content">Post Content</label>
-        <textarea class="form-control" name="post_content" id="" cols="30" rows="10"></textarea>
-    </div>
-
-    <div class="form-group">
-        <input type="submit" class="btn btn-primary" name="create_post" value="Publish Post">
+        <input type="submit" class="btn btn-primary" name="add_user" value="Add user">
     </div>
 
 </form>
