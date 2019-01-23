@@ -7,7 +7,6 @@
             <th>Last name</th>
             <th>Email</th>
             <th>Role</th>
-            <th>Date</th>
         </tr>
     </thead>
     <tbody>
@@ -36,8 +35,20 @@
             echo    "<td>$user_lastname</td>";       
             echo    "<td>$cuser_email</td>";
             echo    "<td>$user_role</td>";
-            echo    "<td>$user_role</td>";
+            echo    "<td><a href='users.php?delete=$user_id'>Delete</a></td>";
             echo "</tr>";
+        }
+        
+        if(isset($_GET['delete'])){
+            $user_id = $_GET['delete'];
+
+            $query = "DELETE FROM users WHERE user_id = {$user_id}";
+            $delete_user_query = mysqli_query($connection, $query);
+
+            header('Location: '.$_SERVER['PHP_SELF']);
+            exit;
+
+            confirm_query($delete_user_query);
         }
         ?>
     </tbody>
