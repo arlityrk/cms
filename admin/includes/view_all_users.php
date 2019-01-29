@@ -7,6 +7,9 @@
             <th>Last name</th>
             <th>Email</th>
             <th>Role</th>
+            <th></th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -23,7 +26,7 @@
             $user_password = $row['user_password'];
             $user_firstname= $row['user_firstname'];
             $user_lastname = $row['user_lastname'];
-            $cuser_email = $row['user_email'];
+            $user_email = $row['user_email'];
             $user_image = $row['user_image'];
             $user_role = $row['user_role'];
 
@@ -33,8 +36,11 @@
             echo    "<td>$username</td>";
             echo    "<td>$user_firstname</td>";
             echo    "<td>$user_lastname</td>";       
-            echo    "<td>$cuser_email</td>";
+            echo    "<td>$user_email</td>";
             echo    "<td>$user_role</td>";
+            echo    "<td><a href='users.php?to_adm=$user_id'>To Admin</a></td>";
+            echo    "<td><a href='users.php?to_sub=$user_id'>To Subscriber</a></td>";
+            echo    "<td><a href='users.php?source=edit_user&edit_user=$user_id'>Edit</a></td>";
             echo    "<td><a href='users.php?delete=$user_id'>Delete</a></td>";
             echo "</tr>";
         }
@@ -49,6 +55,30 @@
             exit;
 
             confirm_query($delete_user_query);
+        }
+        
+                if(isset($_GET['to_adm'])){
+            $user_id = $_GET['to_adm'];
+
+            $query = "UPDATE users SET user_role = 'Admin' WHERE user_id = {$user_id}";
+            $change_role_query = mysqli_query($connection, $query);
+
+            header('Location: '.$_SERVER['PHP_SELF']);
+            exit;
+
+            confirm_query($change_role_query);
+        }
+        
+                if(isset($_GET['to_sub'])){
+            $user_id = $_GET['to_sub'];
+
+            $query = "UPDATE users SET user_role = 'Subscriber' WHERE user_id = {$user_id}";
+            $change_role_query = mysqli_query($connection, $query);
+
+            header('Location: '.$_SERVER['PHP_SELF']);
+            exit;
+
+            confirm_query($change_role_query);
         }
         ?>
     </tbody>
